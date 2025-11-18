@@ -40,22 +40,17 @@ body{
   padding:10px 26px;
   font-size:18px;
   font-weight:700;
-
   border-radius:40px;
   border:1px solid rgba(255,255,255,0.45);
-
   background:rgba(255,255,255,0.10);
   backdrop-filter:blur(12px);
   -webkit-backdrop-filter:blur(12px);
-
   color:white;
   cursor:pointer;
-
   box-shadow:
     0 0 18px rgba(255,255,255,0.45),
     0 0 32px rgba(255,255,255,0.22),
     inset 0 0 8px rgba(255,255,255,0.25);
-
   transition:transform .18s ease, box-shadow .25s ease;
 }
 
@@ -67,7 +62,7 @@ body{
     inset 0 0 12px rgba(255,255,255,0.32);
 }
 
-/* ===== 상단 사진 영역 (🔥 Glow 효과 추가됨) ===== */
+/* ===== 상단 사진 영역 ===== */
 .top-photo-area{
   height:70%;
   background:#000;
@@ -78,26 +73,19 @@ body{
   justify-content:center;
   align-items:center;
   border-bottom:1px solid rgba(255,255,255,0.10);
-
-  /* 🔥 White neon/moody glow 추가된 부분 */
-  box-shadow:
-    0 0 35px rgba(255,255,255,0.35),
-    0 0 70px rgba(255,255,255,0.18),
-    0 0 120px rgba(255,255,255,0.12);
 }
 
 /* ===== row 영역 ===== */
 .clothes-row{
   height:15%;
-  background:rgba(255,255,255,0.03);
-  backdrop-filter:blur(10px);
-  -webkit-backdrop-filter:blur(10px);
-  border-top:1px solid rgba(255,255,255,0.45);
-  border-bottom:1px solid rgba(255,255,255,0.30);
+  background:rgba(255,255,255,0.12);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  border-top:1px solid rgba(255,255,255,0.28);
+  border-bottom:1px solid rgba(255,255,255,0.24);
   box-shadow:
-    0 -2px 10px rgba(255,255,255,0.20),
-    0 -4px 18px rgba(255,255,255,0.12),
-    inset 0 1px 6px rgba(255,255,255,0.15);
+    0 0 14px rgba(255,255,255,0.22),
+    inset 0 0 8px rgba(255,255,255,0.24);
   display:flex;
   align-items:center;
   padding:0 12px;
@@ -258,7 +246,8 @@ body{
 
 <body>
 
-<button class="tryon-btn" onclick="location.href='result.html'">착용하기</button>
+<!-- 🔥 여기만 수정됨: result.html → loading.html -->
+<button class="tryon-btn" onclick="location.href='loading.html'">착용하기</button>
 
 <div class="top-photo-area"></div>
 
