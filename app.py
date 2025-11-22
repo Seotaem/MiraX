@@ -4,7 +4,11 @@ import os, base64, time # time 모듈 추가
 from PIL import Image
 from io import BytesIO
 
-app = Flask(__name__)
+# 템플릿 폴더 경로 설정
+template_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'templates')
+static_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'static')
+
+app = Flask(__name__, template_folder=template_dir, static_folder=static_dir)
 
 TOP_DIR = "static/tops"
 BOTTOM_DIR = "static/bottoms"
@@ -109,7 +113,7 @@ def tryon():
 # [수정됨] /result 라우트가 쿼리 파라미터로 정확한 이미지 경로를 받도록 수정
 @app.route("/result")
 def result_page():
-    # 1. 'select.html'의 JS가 넘겨준 'image' 파라미터를 받습니다.
+    # 1. 'loading.html'의 JS가 넘겨준 'image' 파라미터를 받습니다.
     image_path = request.args.get("image")
 
     # 2. 이미지 경로가 없거나, 해당 파일이 실제로 존재하지 않으면 404 오류
@@ -118,6 +122,14 @@ def result_page():
         
     # 3. 템플릿에 정확한 경로 전달
     return render_template("result.html", result_image=image_path)
+
+@app.route("/review")
+def review_page():
+    return render_template("review.html")
+
+@app.route("/loading")
+def loading_page():
+    return render_template("loading.html")
 
 
 if __name__ == "__main__":

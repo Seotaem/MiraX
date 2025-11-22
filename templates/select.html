@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -75,20 +76,42 @@ body{
   border-bottom:1px solid rgba(255,255,255,0.10);
 }
 
-/* ===== row 영역 ===== */
+/* ===== row 영역 (iOS Liquid Glass) ===== */
 .clothes-row{
   height:15%;
-  background:rgba(255,255,255,0.12);
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
-  border-top:1px solid rgba(255,255,255,0.28);
-  border-bottom:1px solid rgba(255,255,255,0.24);
+  background:rgba(255,255,255,0.75);
+  backdrop-filter:blur(60px) saturate(200%) brightness(1.1);
+  -webkit-backdrop-filter:blur(60px) saturate(200%) brightness(1.1);
+  border-top:0.5px solid rgba(255,255,255,0.9);
+  border-bottom:0.5px solid rgba(255,255,255,0.3);
   box-shadow:
-    0 0 14px rgba(255,255,255,0.22),
-    inset 0 0 8px rgba(255,255,255,0.24);
+    0 -1px 0 rgba(255,255,255,0.7) inset,
+    0 1px 0 rgba(255,255,255,0.4) inset,
+    0 4px 30px rgba(0,0,0,0.12),
+    0 8px 60px rgba(0,0,0,0.08),
+    0 0 1px rgba(255,255,255,0.8) inset;
   display:flex;
   align-items:center;
   padding:0 12px;
+  position:relative;
+}
+
+.clothes-row::before{
+  content:"";
+  position:absolute;
+  left:0;right:0;top:0;
+  height:1px;
+  background:linear-gradient(90deg,
+    transparent,
+    rgba(255,255,255,0.95) 15%,
+    rgba(255,255,255,1) 50%,
+    rgba(255,255,255,0.95) 85%,
+    transparent
+  );
+  box-shadow:
+    0 1px 3px rgba(255,255,255,0.6),
+    0 0 8px rgba(255,255,255,0.4);
+  filter:blur(0.3px);
 }
 
 .row-title{
@@ -96,8 +119,11 @@ body{
   min-width:70px;
   font-size:18px;
   font-weight:700;
-  color:rgba(255,255,255,0.88);
-  text-shadow:0 0 6px rgba(255,255,255,0.35);
+  color:#0a0a0a;
+  letter-spacing:0.2px;
+  text-shadow:
+    0 0.5px 1px rgba(255,255,255,0.8),
+    0 1px 3px rgba(255,255,255,0.5);
 }
 
 .horizontal-scroll{
@@ -114,56 +140,72 @@ body{
   mask-image: linear-gradient(
     to right,
     transparent 0%,
-    black 12%,
-    black 88%,
+    black 10%,
+    black 90%,
     transparent 100%
   );
 }
 
 .horizontal-scroll::-webkit-scrollbar{ height:6px }
 .horizontal-scroll::-webkit-scrollbar-track{
-  background:rgba(255,255,255,0.08);
+  background:rgba(0,0,0,0.05);
   border-radius:10px;
+  backdrop-filter:blur(10px);
 }
 .horizontal-scroll::-webkit-scrollbar-thumb{
-  background:rgba(255,255,255,0.35);
+  background:rgba(0,0,0,0.25);
   border-radius:10px;
+  border:1px solid rgba(255,255,255,0.3);
+  backdrop-filter:blur(10px);
+}
+.horizontal-scroll::-webkit-scrollbar-thumb:hover{
+  background:rgba(0,0,0,0.35);
 }
 
-/* ===== 의류 이미지 ===== */
+/* ===== 의류 이미지 (iOS Liquid Glass) ===== */
 .clothes-img{
   height:95%;
   max-height:150px;
   margin-right:20px;
   cursor:pointer;
 
-  border-radius:12px;
-  background:rgba(255,255,255,0.05);
-  padding:4px;
+  border-radius:14px;
+  background:rgba(255,255,255,0.6);
+  backdrop-filter:blur(20px) saturate(150%);
+  -webkit-backdrop-filter:blur(20px) saturate(150%);
+  padding:6px;
+  border:0.5px solid rgba(255,255,255,0.7);
 
   transition: transform .25s var(--ease), 
               box-shadow .25s var(--ease),
-              opacity .25s var(--ease);
+              opacity .25s var(--ease),
+              background .25s var(--ease);
 
   box-shadow:
-    0 0 8px rgba(255,255,255,0.25),
-    inset 0 0 10px rgba(255,255,255,0.15);
+    0 2px 10px rgba(0,0,0,0.15),
+    0 1px 3px rgba(0,0,0,0.1),
+    0 0 0 0.5px rgba(255,255,255,0.5) inset;
 }
 
 .clothes-img:hover{
   transform:scale(1.08);
+  background:rgba(255,255,255,0.75);
   box-shadow:
-    0 0 16px rgba(255,255,255,0.45),
-    inset 0 0 16px rgba(255,255,255,0.25);
+    0 4px 20px rgba(0,0,0,0.2),
+    0 2px 8px rgba(0,0,0,0.15),
+    0 0 0 0.5px rgba(255,255,255,0.6) inset;
 }
 
 .clothes-img.selected{
   transform:scale(1.12);
+  background:rgba(74,127,255,0.15);
+  backdrop-filter:blur(20px) saturate(150%);
+  -webkit-backdrop-filter:blur(20px) saturate(150%);
+  border:1px solid rgba(74,127,255,0.4);
   box-shadow:
-    0 0 20px rgba(74,127,255,0.75),
-    0 0 30px rgba(74,127,255,0.45),
-    inset 0 0 16px rgba(74,127,255,0.30);
-  outline:2px solid rgba(74,127,255,0.45);
+    0 4px 24px rgba(74,127,255,0.35),
+    0 2px 12px rgba(74,127,255,0.25),
+    0 0 0 1px rgba(255,255,255,0.5) inset;
 }
 
 .clothes-img.deal-from-center{
@@ -188,7 +230,8 @@ body{
 .modal-overlay{
   position:fixed; inset:0;
   background:rgba(0,0,0,0.6);
-  display:flex; justify-content:center; align-items:center;
+  display:flex; justify-content:center; align-items:flex-start;
+  padding-top:8vh;
   z-index:3000;
   backdrop-filter:blur(4px);
 }
@@ -196,20 +239,26 @@ body{
 .modal-box{
   background:rgba(0,0,0,0.55);
   border:1px solid rgba(255,255,255,0.35);
-  border-radius:16px;
-  padding:22px;
-  width:85%; max-width:380px;
+  border-radius:20px;
+  padding:32px;
+  width:90%; max-width:600px;
   box-shadow:
     0 0 18px rgba(255,255,255,0.25),
     inset 0 0 10px rgba(255,255,255,0.25);
   animation:fadeIn .25s ease-out;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
 }
 
 .modal-img{
-  width:100%; max-width:270px;
-  border-radius:12px;
-  margin-bottom:22px;
+  width:100%; max-width:450px;
+  border-radius:16px;
+  margin-bottom:28px;
   box-shadow:0 0 12px rgba(255,255,255,0.32);
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
 }
 
 .modal-buttons{
@@ -221,11 +270,16 @@ body{
 .modal-btn{
   flex:1;
   border:none;
-  border-radius:12px;
-  padding:12px 0;
-  font-size:17px;
+  border-radius:14px;
+  padding:18px 0;
+  font-size:20px;
   font-weight:700;
   cursor:pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modal-btn:active{
+  transform:scale(0.96);
 }
 
 .cancel-btn{
@@ -247,7 +301,7 @@ body{
 <body>
 
 <!-- 🔥 여기만 수정됨: result.html → loading.html -->
-<button class="tryon-btn" onclick="location.href='loading.html'">착용하기</button>
+<button class="tryon-btn" id="tryonBtn">착용하기</button>
 
 <div class="top-photo-area"></div>
 
@@ -285,7 +339,7 @@ document.addEventListener("DOMContentLoaded", () => {
       `url('${savedImage}')`;
   } else {
     alert("사진이 없습니다. 다시 촬영해주세요.");
-    window.location.href = "capture.html";
+    window.location.href = "/capture";
   }
 });
 
@@ -347,6 +401,10 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(runDeal);
   }
 
+  // 선택된 옷 정보 저장
+  let selectedTop = null;
+  let selectedBottom = null;
+
   function openModal(src, type, name){
     const overlay = document.createElement('div');
     overlay.className = 'modal-overlay';
@@ -365,6 +423,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     overlay.querySelector('.cancel-btn').onclick = () => overlay.remove();
     overlay.querySelector('.select-btn').onclick = () => {
+      if (type === 'top') {
+        selectedTop = src;
+        // 해당 이미지에 selected 클래스 추가
+        imgs.filter(x => x.dataset.type === 'top').forEach(el => el.classList.remove('selected'));
+        const selectedImg = imgs.find(x => x.src === src && x.dataset.type === 'top');
+        if (selectedImg) selectedImg.classList.add('selected');
+      } else if (type === 'bottom') {
+        selectedBottom = src;
+        // 해당 이미지에 selected 클래스 추가
+        imgs.filter(x => x.dataset.type === 'bottom').forEach(el => el.classList.remove('selected'));
+        const selectedImg = imgs.find(x => x.src === src && x.dataset.type === 'bottom');
+        if (selectedImg) selectedImg.classList.add('selected');
+      }
       overlay.remove();
     };
   }
@@ -383,6 +454,24 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   startDeal();
+
+  // 착용하기 버튼 클릭 이벤트
+  document.getElementById('tryonBtn').onclick = () => {
+    if (!selectedTop && !selectedBottom) {
+      alert('옷을 선택해주세요.');
+      return;
+    }
+
+    // 선택된 옷 정보를 localStorage에 저장
+    const tryonData = {
+      top: selectedTop,
+      bottom: selectedBottom,
+      mode: selectedTop && selectedBottom ? 'both' : (selectedTop ? 'top' : 'bottom')
+    };
+    localStorage.setItem('tryonData', JSON.stringify(tryonData));
+    
+    window.location.href = '/loading';
+  };
 });
 </script>
 

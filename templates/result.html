@@ -168,12 +168,16 @@
     <div class="content-wrapper">
         
         <div class="photo-frame">
+            {% if result_image %}
+            <img src="/{{ result_image }}" alt="결과 이미지" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+            {% else %}
             <span class="placeholder-text">[ 결과 사진 영역 ]</span>
+            {% endif %}
         </div>
         
         <div class="button-container">
-            <button class="btn btn-retry">다시 입어보기</button>
-            <button class="btn btn-exit">종료</button>
+            <button class="btn btn-retry" onclick="window.location.href='/select'">다시 입어보기</button>
+            <button class="btn btn-exit" onclick="window.location.href='/'">종료</button>
         </div>
 
     </div>
